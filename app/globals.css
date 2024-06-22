@@ -3,31 +3,186 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --color-danger: #ff7782;
+
+  --detail-medium-contrast: rgb(234, 234, 234);
+  --detail-low-contrast: rgb(240, 240, 242);
+
+  --container-width-lg: 80%;
+  --container-width-md: 90%;
+  --container-width-sm: 74%;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.container {
+  width: var(--container-width-md);
+  margin: 0 auto;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
+.jumbotron {
+  background-image: linear-gradient(
       to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+      rgba(196, 16, 16, 0.308),
+      rgba(0, 0, 0, 0.904)
+    ),
+    url('./assets/images/raya.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 90vh;
+  color: white;
+  position: relative;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+.jumbotron .menu__toggle {
+  @apply absolute top-1 right-1 cursor-pointer bg-slate-100 rounded-md p-1 text-slate-500 md:hidden;
+}
+
+button {
+  @apply text-base px-6 py-2 text-black bg-slate-100;
+}
+
+.more {
+  font-size: 0.9rem;
+  color: var(--color-danger);
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.play {
+  @apply bg-purple-500 text-slate-50 rounded-lg px-10 hover:bg-purple-700;
+}
+
+nav {
+  @apply hidden md:flex;
+}
+
+nav.mobile {
+  @apply flex flex-col w-0 opacity-0 fixed top-0 left-0 h-full z-10  bg-slate-400  transition-all duration-200 ease-in-out md:hidden;
+}
+
+nav.menushow {
+  @apply w-60 opacity-100;
+  /* box-shadow: var(--box-shadow); */
+}
+
+.jumbo__info {
+  position: absolute;
+  top: 20%;
+  left: 2rem;
+  max-width: 50rem;
+}
+
+.jumbo__info .btn-group {
+  @apply mt-4 flex items-center gap-4;
+}
+
+.nav__close {
+  @apply absolute w-8 h-8 flex items-center justify-center right-1 top-1 bg-slate-50 text-black cursor-pointer  rounded-[50%] hover:bg-slate-100;
+}
+
+.nav__link {
+  @apply text-sm cursor-pointer pl-4 h-12  items-center text-neutral-200  border-solid border-2 border-neutral-500  hover:bg-slate-500 transition-all duration-300 md:border-0 md:h-0;
+}
+
+.nav__link.active {
+  @apply ml-0 bg-slate-500;
+}
+
+.my__list {
+  position: absolute;
+  bottom: 1rem;
+  left: 2rem;
+  right: 2rem;
+}
+
+.movie {
+  background-color: #373b69;
+  border-radius: 1rem;
+}
+
+.movie img {
+  height: 220px;
+  width: 100%;
+  object-fit: cover;
+  box-shadow: -2px -2px 18px 0px rgba(0, 0, 0, 0.66) inset;
+  -webkit-box-shadow: -2px -2px 18px 0px rgba(0, 0, 0, 0.66) inset;
+  -moz-box-shadow: -2px -2px 18px 0px rgba(0, 0, 0, 0.66) inset;
+}
+
+.movie-info {
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+
+.movie-info h3 {
+  margin: 0;
+}
+
+.movie-info span {
+  background-color: #22254b;
+  border-radius: 3px;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+}
+
+section.trending {
+  margin-top: 1rem;
+}
+
+section.trending .head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.trending .head .title {
+  font-weight: 500;
+  font-size: 1.25rem;
+}
+.trending .head .title {
+  font-weight: 500;
+  font-size: 1.25rem;
+}
+.trending .body {
+  display: flex;
+  justify-items: center;
+  grid-gap: 1rem;
+}
+
+.trending .body .card {
+  background: #d6d6d6;
+  border-radius: 1rem;
+  height: 8rem;
+  width: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.trending .body .info {
+  display: flex;
+  justify-content: center;
+  font-weight: 500;
+}
+
+/* individual pages  */
+
+.movies__container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .movies__container {
+    /* grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); */
   }
+}
+
+@media (min-width: 1024px) {
+}
+
+@media (min-width: 1248px) {
 }
